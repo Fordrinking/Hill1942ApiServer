@@ -12,6 +12,7 @@ if (!is_readable('app/core/Config.php')) {
 	die('No Config.php found, configure and rename config.example.php to Config.php in app/core.');
 }
 
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
