@@ -87,7 +87,7 @@ class Router {
             echo "zz";
 
             echo gettype($controller);
-            echo "\n";
+            echo "\nddddd   ";
             var_dump($controller);
 			//call method
 			$controller->$segments[1]();
