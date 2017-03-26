@@ -97,21 +97,21 @@ class Router {
 	 * Ability to call controllers in their controller/model/param way
 	 */
 	public static function autoDispatch() {
-
+	    echo "111";
 		$uri = parse_url($_SERVER['QUERY_STRING'], PHP_URL_PATH);
 		$uri = trim($uri, ' /');
 		$parts = explode('/', $uri);
 
 		$controller = $uri !== ''      && isset($parts[0])  ? $parts[0] : DEFAULT_CONTROLLER;
 		$method     = $uri !== ''      && isset($parts[1])  ? $parts[1] : DEFAULT_METHOD;
-		$args       = is_array($parts) && count($parts) > 2 ? array_slice($parts, 2) : array(); 
-
+		$args       = is_array($parts) && count($parts) > 2 ? array_slice($parts, 2) : array();
+        echo "222";
 		$char_position = strpos($controller,'&');
 		if ($char_position > 0 ) {
 			$ctp = explode('&', $controller);
 			$controller = $ctp[0];
 		}
-
+        echo "33";
 		$char_position2 = strpos($method,'&');
 		if ($char_position2 > 0 ) {
 			$ctp = explode('&', $method);
@@ -125,7 +125,7 @@ class Router {
 				$args[0] = $ctp[0];
 			}
 		}
-
+        echo "444";
 		// Check for file
 		if (!file_exists('app/controllers/' . $controller . '.php')) {
 			return false;
@@ -133,7 +133,7 @@ class Router {
 
 		$controller = '\controllers\\' . $controller;
 		$c = new $controller;
-
+        echo "555";
 		if (method_exists($c, $method)) {
 			
 			$c->$method($args);
