@@ -1,5 +1,7 @@
 <?php namespace core;
 
+use \Exception;
+
 /*
 * logger class - Custom errors
 *
