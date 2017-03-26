@@ -77,7 +77,7 @@ Router::any('api/get-all-mails', '\controllers\api\user@getAllMails');
 
 Router::any('api/test', '\controllers\api\user@test');
 
-Router::any('/', '\controllers\api\home@index');
+Router::any('/', '\controllers\api\Home@index');
 
 //if no route found
 //Router::error('/core/error@index');
