@@ -84,12 +84,12 @@ class Router {
 
         echo "vvv";
 		if($matched == null){
-
+            echo "zz";
 			//call method
 			$controller->$segments[1]();
 
 		} else {
-
+            echo "qqq";
 			//call method and pass in array keys as params
 			call_user_func_array(array($controller, $segments[1]), $matched);
 		
