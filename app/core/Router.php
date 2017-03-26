@@ -69,6 +69,8 @@ class Router {
 	 */
 	public static function invokeObject($callback,$matched = null,$msg = null){
 
+	    echo $callback;
+        echo "\n";
 		//grab all parts based on a / separator and collect the last index of the array
 		$last = explode('/',$callback);
 		$last = end($last);
