@@ -179,6 +179,8 @@ class Router {
 					}
 				}
 			}
+
+            echo "bbb";
 		}
 
 		// check if route is defined without regex
@@ -209,7 +211,7 @@ class Router {
 
 			}
 			// end foreach
-
+            echo "ccc";
 		} else {
 
 			// check if defined with regex
@@ -251,11 +253,14 @@ class Router {
 				$pos++;
 			}
 			// end foreach
+            echo "ddd";
 		}
 
 		if (self::$fallback) {
 			//call the auto dispatch method
 			$found_route = self::autoDispatch();
+
+            echo "eee";
 		}
 
 		// run the error callback if the route was not found
@@ -272,11 +277,13 @@ class Router {
 				//call object controller and method
 				self::invokeObject(self::$error_callback,null,'No routes found.');
 				if (self::$halts) return;
-
+                echo "fff";
 			} else {
 
 				call_user_func(self::$error_callback); 
 				if (self::$halts) return;
+
+                echo "ggg";
 
 			}
 
