@@ -1,5 +1,6 @@
 <?php namespace core;
 
+use \Exception;
 /*
  * Router - routing urls to closurs and controllers - modified from https://github.com/NoahBuscher/Macaw
  *
@@ -82,7 +83,12 @@ class Router {
         echo $segments[0] . "\n";
 
         echo "eeeeeeeeeeeee   ";
-		$controller = new $segments[0]($msg);
+        try {
+            $controller = new $segments[0]($msg);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
 
         echo "vvv";
 		if($matched == null){
