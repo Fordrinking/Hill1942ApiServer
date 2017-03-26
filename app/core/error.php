@@ -1,6 +1,6 @@
 <?php namespace core;
-use core\controller,
-    core\view;
+use core\Controller,
+    core\View;
 
 /*
  * error class - calls a 404 page
