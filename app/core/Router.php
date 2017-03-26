@@ -257,14 +257,17 @@ class Router {
 		}
 
 		if (self::$fallback) {
+
+
 			//call the auto dispatch method
 			$found_route = self::autoDispatch();
 
             echo "eee";
 		}
-
+        echo "jjj";
 		// run the error callback if the route was not found
 		if (!$found_route) {
+            echo "www";
 			if (!self::$error_callback) {
 				self::$error_callback = function() {
 					header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
