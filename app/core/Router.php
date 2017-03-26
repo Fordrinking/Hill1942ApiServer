@@ -79,8 +79,10 @@ class Router {
 		$segments = explode('@',$last);                         
 
 		//instanitate controller with optional msg (used for error_callback)
+        echo $segments[0] . "\n";
 		$controller = new $segments[0]($msg);
 
+        echo "vvv";
 		if($matched == null){
 
 			//call method
