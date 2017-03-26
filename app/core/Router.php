@@ -80,6 +80,8 @@ class Router {
 
 		//instanitate controller with optional msg (used for error_callback)
         echo $segments[0] . "\n";
+
+        echo "eeeeeeeeeeeee   ";
 		$controller = new $segments[0]($msg);
 
         echo "vvv";
