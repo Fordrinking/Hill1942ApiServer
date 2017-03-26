@@ -78,7 +78,7 @@ Router::any('api/get-all-mails', '\controllers\api\user@getAllMails');
 Router::any('api/test', '\controllers\api\user@test');
 
 //if no route found
-Router::error('\core\error@index');
+Router::error('/core/error@index');
 
 //turn on old style routing
 Router::$fallback = false;
