@@ -85,6 +85,10 @@ class Router {
         echo "vvv";
 		if($matched == null){
             echo "zz";
+
+            echo gettype($controller);
+            echo "\n";
+            var_dump($controller);
 			//call method
 			$controller->$segments[1]();
 
