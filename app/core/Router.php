@@ -269,6 +269,7 @@ class Router {
 		if (!$found_route) {
             echo "www";
 			if (!self::$error_callback) {
+                echo "xxx";
 				self::$error_callback = function() {
 					header($_SERVER['SERVER_PROTOCOL']." 404 Not Found");
 					echo '404';
@@ -276,13 +277,13 @@ class Router {
 			} 
 
 			if(!is_object(self::$error_callback)){
-
+                echo "yyy";
 				//call object controller and method
 				self::invokeObject(self::$error_callback,null,'No routes found.');
 				if (self::$halts) return;
                 echo "fff";
 			} else {
-
+                echo "zzz";
 				call_user_func(self::$error_callback); 
 				if (self::$halts) return;
 
