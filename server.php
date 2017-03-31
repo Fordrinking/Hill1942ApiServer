@@ -12,7 +12,7 @@ class Server
         $this->serv = new swoole_http_server("127.0.0.1", 9501);
         $this->serv->set(array(
             'worker_num' => 2,
-            'daemonize' => true,
+            'daemonize' => false,
         ));
 
         /*$this->serv->on('Start', array($this, 'onStart'));
@@ -44,13 +44,13 @@ class Server
 
     public function onClose(swoole_server $serv, $fd, $from_id ) {
         echo "Client {$fd} close connection\n";
-    }
+    }*/
 
     public function onWorkerStart(swoole_server $serv , $worker_id) {
         require_once "EntryCGI.php";
 
         (new EntryCGI($this->serv))->run();
-    }*/
+    }
 }
 // 启动服务器
 $server = new Server();
