@@ -11,14 +11,14 @@ class Server
     public function __construct() {
         $this->serv = new swoole_http_server("127.0.0.1", 9501);
         $this->serv->set(array(
-            'worker_num' => 8,
+            'worker_num' => 2,
             'daemonize' => true,
         ));
 
-        $this->serv->on('Start', array($this, 'onStart'));
+        /*$this->serv->on('Start', array($this, 'onStart'));
         $this->serv->on('Connect', array($this, 'onConnect'));
         $this->serv->on('Receive', array($this, 'onReceive'));
-        $this->serv->on('Close', array($this, 'onClose'));
+        $this->serv->on('Close', array($this, 'onClose'));*/
 
         $this->serv->on('request', function ($request, $response) {
             $response->end("<h1>Hello Swoole. #".rand(1000, 9999)."</h1>");
@@ -27,7 +27,7 @@ class Server
         $this->serv->start();
     }
 
-    public function onStart(swoole_server $serv ) {
+   /* public function onStart(swoole_server $serv ) {
         echo "Start\n";
     }
 
@@ -50,7 +50,7 @@ class Server
         require_once "EntryCGI.php";
 
         (new EntryCGI($this->serv))->run();
-    }
+    }*/
 }
 // 启动服务器
 $server = new Server();
