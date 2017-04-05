@@ -1,7 +1,9 @@
 *.secret
 *.lock
+*.pid
 .idea
 tmp
 vendor
 Config.php
 log
+src/config/db.php
