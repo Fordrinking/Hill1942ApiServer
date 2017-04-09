@@ -22,11 +22,6 @@ $config['services'] = __DIR__ . '/config/services.php';
  */
 $config['plugins'] = __DIR__ . '/config/plugins.php';
 
-/**
- * Loading application plugins definitions.
- */
-$config['db'] = __DIR__ . '/config/db.php';
-
 $app = new blink\core\Application($config);
 
 return $app;
