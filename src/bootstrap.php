@@ -29,5 +29,4 @@ $config['db'] = __DIR__ . '/config/db.php';
 
 $app = new blink\core\Application($config);
 
-
 return $app;
