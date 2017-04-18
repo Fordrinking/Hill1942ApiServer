@@ -31,6 +31,7 @@ class Database extends PDO
         // Group information
         $type = DB_TYPE;
         $host = DB_HOST;
+        $port = DB_PORT;
         $name = DB_NAME;
         $user = DB_USER;
         $pass = DB_PASS;
@@ -44,7 +45,7 @@ class Database extends PDO
         }
 
         try {
-            $instance = new Database("$type:host=$host;dbname=$name;charset=utf8", $user, $pass);
+            $instance = new Database("$type:host=$host;port=$port;dbname=$name;charset=utf8", $user, $pass);
             $instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Setting Database into $instances to avoid duplication
