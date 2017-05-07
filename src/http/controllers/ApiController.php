@@ -5,6 +5,7 @@ namespace app\http\controllers;
 use blink\core\Object;
 use blink\http\Request;
 use app\dao\Database;
+use app\helper\GeoHash;
 use \PDO;
 
 class ApiController extends Object
@@ -15,7 +16,7 @@ class ApiController extends Object
         $longitude = $request->params->get('longitude');
         $latitude  = $request->params->get('latitude');
 
-        $gHash = \GeoHash::encode($longitude, $latitude);
+        $gHash = GeoHash::encode($longitude, $latitude);
 
         if ($openid && strlen($openid) == 32) {
             $db = Database::get();

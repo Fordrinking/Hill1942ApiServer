@@ -5,6 +5,8 @@
  * Desc:
  */
 
+namespace app\helper;
+
 class GeoHash
 {
     private static $table = "0123456789bcdefghjkmnpqrstuvwxyz";
