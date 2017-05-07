@@ -86,7 +86,7 @@ class Database extends PDO
         $stmt->execute();
     }
 
-    public function insertOnDuplicate($table, $data, $updateData){
+    /*public function insertOnDuplicate($table, $data, $updateData){
         ksort($data);
         $fieldNames = implode(',', array_keys($data));
         $fieldValues = ':'.implode(', :', array_keys($data));
@@ -105,17 +105,17 @@ class Database extends PDO
             $stmt->bindValue(":$key", $value);
         }
         $stmt->execute();
-    }
+    }*/
 
 
     public function update($table, $data, $where){
 
-        $this->insertOnDuplicate("aaa", array(
+        /*$this->insertOnDuplicate("aaa", array(
             "openid" => "ddd",
             "dtTime" => "dddddddd"
         ), array(
             "dtTime" => "kkkkk"
-        ));
+        ));*/
 
         ksort($data);
         $fieldDetails = NULL;
