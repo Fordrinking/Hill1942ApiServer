@@ -10,6 +10,7 @@ class ApiController extends Object
 {
     public function upload(Request $request)
     {
+        $openid = $request->params->get('openid');
         $longtitude = $request->params->get('longitude');
         $latitude = $request->params->get('latitude');
 
@@ -17,7 +18,7 @@ class ApiController extends Object
         $db = Database::get();
 
         $db->insert("tbTest", array(
-            "sOpenId" => md5("user" . time()),
+            "sOpenId" => $openid,
             "sLongtitude" => $longtitude,
             "sLatitude" => $latitude
         ));

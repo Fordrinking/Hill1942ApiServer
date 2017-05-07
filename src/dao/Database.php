@@ -71,10 +71,35 @@ class Database extends PDO
         return $stmt->fetchAll($fetchMode);
     }
 
-    public function insert($table, $data){
+    public function insert($table, $data, $ignore = false){
         ksort($data);
         $fieldNames = implode(',', array_keys($data));
         $fieldValues = ':'.implode(', :', array_keys($data));
+        if ($ignore) {
+            $stmt = $this->prepare("INSERT ignore INTO $table($fieldNames) VALUES($fieldValues)");
+        } else {
+            $stmt = $this->prepare("INSERT INTO $table($fieldNames) VALUES($fieldValues)");
+        }
+        foreach($data as $key => $value){
+            $stmt->bindValue(":$key", $value);
+        }
+        $stmt->execute();
+    }
+
+    public function insertOnDuplicate($table, $data, $updateData){
+        ksort($data);
+        $fieldNames = implode(',', array_keys($data));
+        $fieldValues = ':'.implode(', :', array_keys($data));
+
+        $updateValues = array();
+        foreach($updateValues as $key => $value) {
+            $updateValues[] = $key . 
+        }
+        //$stmt = $conn->prepare('INSERT INTO customer_info (user_id, fname, lname)
+        // VALUES(:user_id, :fname, :lname)
+    //ON DUPLICATE KEY UPDATE fname= :fname2, lname= :lname2');
+        $sql = "INSERT INTO $table($fieldNames) VALUES($fieldValues) on duplicate key update " .
+            "a";
         $stmt = $this->prepare("INSERT INTO $table($fieldNames) VALUES($fieldValues)");
         foreach($data as $key => $value){
             $stmt->bindValue(":$key", $value);
@@ -82,7 +107,15 @@ class Database extends PDO
         $stmt->execute();
     }
 
+
     public function update($table, $data, $where){
+
+        $this->insertOnDuplicate("aaa", array(
+            "openid" => "ddd",
+            "dtTime" => "dddddddd"
+        ), array(
+            "dtTime" => "kkkkk"
+        ));
 
         ksort($data);
         $fieldDetails = NULL;
