@@ -22,7 +22,7 @@ class ApiController extends Object
 
             $stmt = $db->prepare('INSERT INTO tbTest(sOpenId, sLongitude, sLatitude, sGHash) ' .
                 'VALUES(:openid, :longitude, :latitude, :ghash)' .
-                'ON DUPLICATE KEY UPDATE sLongitude=:lnt, sLatitude=:lat');
+                'ON DUPLICATE KEY UPDATE sLongitude=:lnt, sLatitude=:lat, sGHash=:ghs');
 
             $stmt->bindParam(':openid',     $openid,    PDO::PARAM_STR);
             $stmt->bindParam(':longitude',  $longitude, PDO::PARAM_STR);
