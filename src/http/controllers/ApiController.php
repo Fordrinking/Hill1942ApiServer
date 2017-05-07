@@ -59,6 +59,8 @@ class ApiController extends Object
             $out = $db->select("select * from tbTest where sOpenId = '{$openid}'");
 
             if (count($out) > 0) {
+                echo gettype($out);
+                var_dump($out);
                 $gHash = $out[0]["sGHash"];
 
                 $preHash = substr($gHash, 0, 8) . "%";
