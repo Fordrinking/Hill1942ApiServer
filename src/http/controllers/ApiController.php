@@ -58,11 +58,24 @@ class ApiController extends Object
 
             $out = $db->select("select * from tbTest where sOpenId = '{$openid}'");
 
-            return [
-                "code" => 0,
-                "msg" => "ok",
-                "out" => $out
-            ];
+            if (count($out) > 0) {
+                $gHash = $out[0]["sGHash"];
+
+                $preHash = substr($gHash, 0, 8) . "%";
+
+                $db = Database::get();
+                $out = $db->select("select * from tbTest where sGHash like '{$preHash}'");
+                return [
+                    "code" => 0,
+                    "msg" => "ok",
+                    "out" => $out
+                ];
+            } else {
+                return [
+                    "code" => -2,
+                    "msg" => "openid not exists"
+                ];
+            }
         } else {
             return [
                 "code" => -1,
@@ -84,8 +97,7 @@ class ApiController extends Object
             $preHash = substr($gHash, 0, 8) . "%";
 
             $db = Database::get();
-            $out = array();
-            $db->select("select * from tbTest where sGHash like '{$preHash}'", $out);
+            $out = $db->select("select * from tbTest where sGHash like '{$preHash}'");
 
             return [
                 "code" => 0,
