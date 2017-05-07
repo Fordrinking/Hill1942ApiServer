@@ -48,4 +48,59 @@ class ApiController extends Object
 
 
     }
+
+    public function aroundByOpenId(Request $request)
+    {
+        $openid    = $request->params->get('openid');
+
+        if ($openid && strlen($openid) == 32) {
+            $db = Database::get();
+
+            $out = array();
+            $db->select("select * from tbTest where sOpenId = '{$openid}'", $out);
+
+            return [
+                "code" => 0,
+                "msg" => "ok",
+                "out" => $out
+            ];
+        } else {
+            return [
+                "code" => -1,
+                "msg" => "openid is wrong"
+            ];
+        }
+
+
+
+    }
+
+    public function aroundByPos(Request $request)
+    {
+        $longitude = $request->params->get('longitude');
+        $latitude  = $request->params->get('latitude');
+
+        if ($longitude && $latitude) {
+            $gHash = GeoHash::encode($longitude, $latitude);
+            $preHash = substr($gHash, 0, 8) . "%";
+
+            $db = Database::get();
+            $out = array();
+            $db->select("select * from tbTest where sGHash like '{$preHash}'", $out);
+
+            return [
+                "code" => 0,
+                "msg" => "ok",
+                "out" => $out
+            ];
+        } else {
+            return [
+                "code" => -1,
+                "msg" => "openid is wrong"
+            ];
+        }
+
+
+
+    }
 }
