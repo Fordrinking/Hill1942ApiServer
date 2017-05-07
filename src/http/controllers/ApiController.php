@@ -14,18 +14,27 @@ class ApiController extends Object
         $longtitude = $request->params->get('longitude');
         $latitude = $request->params->get('latitude');
 
+        if ($openid && strlen($openid) == 32) {
+            $db = Database::get();
 
-        $db = Database::get();
+            $db->insert("tbTest", array(
+                "sOpenId" => $openid,
+                "sLongtitude" => $longtitude,
+                "sLatitude" => $latitude
+            ));
 
-        $db->insert("tbTest", array(
-            "sOpenId" => $openid,
-            "sLongtitude" => $longtitude,
-            "sLatitude" => $latitude
-        ));
+            return [
+                "code" => 0,
+                "msg" => "ok"
+            ];
+        } else {
+            return [
+                "code" => -1,
+                "msg" => "openid is wrong"
+            ];
+        }
 
-        return [
-            "code" => 0,
-            "msg" => "ok"
-        ];
+
+
     }
 }
