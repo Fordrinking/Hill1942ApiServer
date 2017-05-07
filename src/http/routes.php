@@ -2,6 +2,6 @@
 return [
     ['GET', '/', 'IndexController@sayHello'],
     ['GET', '/api/upload', 'ApiController@upload'],
-    ['GET', '/api/upload', 'ApiController@aroundByOpenId'],
-    ['GET', '/api/upload', 'ApiController@aroundByPos']
+    ['GET', '/api/aroundByOpenId', 'ApiController@aroundByOpenId'],
+    ['GET', '/api/aroundByPos', 'ApiController@aroundByPos']
 ];
