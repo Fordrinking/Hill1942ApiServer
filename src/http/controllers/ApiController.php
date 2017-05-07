@@ -56,8 +56,7 @@ class ApiController extends Object
         if ($openid && strlen($openid) == 32) {
             $db = Database::get();
 
-            $out = array();
-            $db->select("select * from tbTest where sOpenId = '{$openid}'", $out);
+            $out = $db->select("select * from tbTest where sOpenId = '{$openid}'");
 
             return [
                 "code" => 0,
